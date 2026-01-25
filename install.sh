@@ -23,9 +23,9 @@ ln -sf "$DOTFILES_DIR/bash/bashrc_personal" "$HOME/.bashrc_personal"
 ln -sf "$DOTFILES_DIR/bash/inputrc" "$HOME/.inputrc"
 
 # SSH
-mkdir -p "$HOME/.ssh"
-chmod 700 "$HOME/.ssh"
-ln -sf "$DOTFILES_DIR/ssh/config" "$HOME/.ssh/config"
+#mkdir -p "$HOME/.ssh"
+#chmod 700 "$HOME/.ssh"
+#ln -sf "$DOTFILES_DIR/ssh/config" "$HOME/.ssh/config"
 
 # Starship
 ln -sf "$DOTFILES_DIR/starship/starship.toml" "$HOME/.config/starship.toml"
