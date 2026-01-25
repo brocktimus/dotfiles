@@ -1,0 +1,12 @@
+# Case-insensitive completion
+set completion-ignore-case on
+
+# Show all if there's more than one possible completion
+set show-all-if-ambiguous on
+
+# Beep sucks
+set bell-style none
+
+# Map Up/Down arrows to search history based on what you've already typed
+"\e[A": history-search-backward
+"\e[B": history-search-forward
