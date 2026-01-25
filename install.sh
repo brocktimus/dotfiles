@@ -3,12 +3,16 @@ set -euo pipefail
 
 # --- 1. Config ---
 DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-BIN_DIR="$HOME/.local/bin"
+
+# Use absolute paths for everything during install
+export BIN_DIR="$HOME/.local/bin"
+export PATH="$BIN_DIR:$PATH"
+
+# Ensure the bin dir exists before fetch_bin runs
 mkdir -p "$BIN_DIR"
 
-
-# Get absolute path for robust symlinking
-DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# Force non-interactive for any apt/tools
+export DEBIAN_FRONTEND=noninteractive
 
 # Git
 ln -sf "$DOTFILES_DIR/git/gitconfig" "$HOME/.gitconfig"
