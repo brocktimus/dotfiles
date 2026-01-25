@@ -95,18 +95,13 @@ alias ta='tmux attach -t work || tmux new -s work'
 # ==========================================
 # PROMPT (The "No-Starship" fallback)
 # ==========================================
-# If Starship is commented out or fails, show a useful git-aware prompt.
-if command -v starship >/dev/null; then
-    eval "$(starship init bash)"
+# Fallback to standard git-prompt if available in the image
+GB_SCRIPT="/usr/lib/git-core/git-sh-prompt"
+if [ -f "$GB_SCRIPT" ]; then
+    source "$GB_SCRIPT"
+    export PS1='\[\e[32m\]\u@\h\[\e[m\]:\[\e[34m\]\W\[\e[31m\]$(__git_ps1 " (%s)")\[\e[m\]\$ '
 else
-    # Fallback to standard git-prompt if available in the image
-    GB_SCRIPT="/usr/lib/git-core/git-sh-prompt"
-    if [ -f "$GB_SCRIPT" ]; then
-        source "$GB_SCRIPT"
-        export PS1='\[\e[32m\]\u@\h\[\e[m\]:\[\e[34m\]\W\[\e[31m\]$(__git_ps1 " (%s)")\[\e[m\]\$ '
-    else
-        export PS1='[\u@\h \W]\$ '
-    fi
+    export PS1='[\u@\h \W]\$ '
 fi
 
 # ==========================================

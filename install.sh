@@ -28,9 +28,6 @@ ln -sf "$DOTFILES_DIR/bash/inputrc" "$HOME/.inputrc"
 #chmod 700 "$HOME/.ssh"
 #ln -sf "$DOTFILES_DIR/ssh/config" "$HOME/.ssh/config"
 
-# Starship
-ln -sf "$DOTFILES_DIR/starship/starship.toml" "$HOME/.config/starship.toml"
-
 # fzf
 ln -sfn "$DOTFILES_DIR/fzf" "$HOME/.fzf"
 
@@ -74,7 +71,6 @@ fetch_bin "fzf"      "https://github.com/junegunn/fzf/releases/download/0.46.1/f
 fetch_bin "bat"      "https://github.com/sharkdp/bat/releases/download/v0.24.0/bat-v0.24.0-x86_64-unknown-linux-musl.tar.gz"
 fetch_bin "jq"       "https://github.com/jqlang/jq/releases/download/jq-1.7.1/jq-linux-amd64"
 fetch_bin "delta"    "https://github.com/dandavison/delta/releases/download/0.17.0/delta-0.17.0-x86_64-unknown-linux-musl.tar.gz"
-fetch_bin "starship" "https://github.com/starship/starship/releases/download/v1.17.1/starship-x86_64-unknown-linux-musl.tar.gz"
 
 # Neovim (Linux x64 tarball - more reliable than AppImage)
 # This needs to be extracted carefully to keep the /share and /bin folders together
