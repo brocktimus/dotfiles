@@ -95,5 +95,5 @@ fi
 echo "Done."
 echo "Install finished, lingering for agent handshake..."
 sync
-sleep 5
+sleep 1
 exit 0
