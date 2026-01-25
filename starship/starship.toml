@@ -1,27 +1,38 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
-[battery]
-full_symbol = "• "
-charging_symbol = "⇡ "
-discharging_symbol = "⇣ "
-unknown_symbol = "❓ "
-empty_symbol = "❗ "
+# Disable the giant newline at the start of the prompt
+add_newline = true
 
-[erlang]
-symbol = "ⓔ "
+# Custom plain format
+format = """$directory$git_branch$git_status$character"""
 
-[fortran]
-format = "[$symbol($version)]($style)"
-symbol = "F "
+[directory]
+style = "bold blue"
+truncation_length = 3
+truncation_symbol = ".../"
 
-[nodejs]
-symbol = "[⬢](bold green) "
+[character]
+success_symbol = "[->](bold green)"
+error_symbol = "[x](bold red)"
 
-[pulumi]
-symbol = "🧊 "
+[git_branch]
+symbol = "git:"
+style = "bold purple"
 
-[typst]
-symbol = "t "
+[git_status]
+format = "([\\[$all_status$ahead_behind\\]]($style) )"
+style = "red"
 
+# Kill all the language/container waffle
+[package]
+disabled = true
 [docker_context]
+disabled = true
+[fortran]
+disabled = true
+[lua]
+disabled = true
+[nodejs]
+disabled = true
+[python]
 disabled = true
