@@ -1,19 +1,19 @@
 #!/bin/bash
 set -euo pipefail
 
-# --- 1. Config ---
-DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-
-# Use absolute paths for everything during install
-export BIN_DIR="$HOME/.local/bin"
-export PATH="$BIN_DIR:$PATH"
-
-# Ensure the bin dir exists before fetch_bin runs
-mkdir -p "$BIN_DIR"
-
-# Force non-interactive for any apt/tools
-export DEBIAN_FRONTEND=noninteractive
-
+###### --- 1. Config ---
+#####DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+#####
+###### Use absolute paths for everything during install
+#####export BIN_DIR="$HOME/.local/bin"
+#####export PATH="$BIN_DIR:$PATH"
+#####
+###### Ensure the bin dir exists before fetch_bin runs
+#####mkdir -p "$BIN_DIR"
+#####
+###### Force non-interactive for any apt/tools
+#####export DEBIAN_FRONTEND=noninteractive
+#####
 ###### Git
 #####ln -sf "$DOTFILES_DIR/git/gitconfig" "$HOME/.gitconfig"
 #####ln -sf "$DOTFILES_DIR/git/gitignore_global" "$HOME/.gitignore_global"
@@ -74,7 +74,7 @@ export DEBIAN_FRONTEND=noninteractive
 #####fetch_bin "jq"       "https://github.com/jqlang/jq/releases/download/jq-1.7.1/jq-linux-amd64"
 #####fetch_bin "delta"    "https://github.com/dandavison/delta/releases/download/0.17.0/delta-0.17.0-x86_64-unknown-linux-musl.tar.gz"
 #####fetch_bin "starship" "https://github.com/starship/starship/releases/download/v1.17.1/starship-x86_64-unknown-linux-musl.tar.gz"
-
+#####
 ###### Neovim (Linux x64 tarball - more reliable than AppImage)
 ###### This needs to be extracted carefully to keep the /share and /bin folders together
 #####if [[ ! -d "$HOME/.local/nvim-linux64" ]]; then
@@ -82,7 +82,7 @@ export DEBIAN_FRONTEND=noninteractive
 #####    curl -fsSL "https://github.com/neovim/neovim/releases/download/v0.9.5/nvim-linux64.tar.gz" | tar xz -C "$HOME/.local/"
 #####    ln -sf "$HOME/.local/nvim-linux64/bin/nvim" "$BIN_DIR/nvim"
 #####fi
-
+#####
 ###### 2. Inject the source command into the native bashrc
 ###### We use a guard (grep) so we don't append it every time you run the script
 #####if ! grep -q "source ~/.bashrc_personal" "$HOME/.bashrc"; then
@@ -90,7 +90,7 @@ export DEBIAN_FRONTEND=noninteractive
 #####    echo "# Load personal overrides" >> "$HOME/.bashrc"
 #####    echo "[ -f ~/.bashrc_personal ] && source ~/.bashrc_personal" >> "$HOME/.bashrc"
 #####fi
-
-echo "Done."
-sleep 1
+#####
+#####echo "Done."
+#####sleep 1
 exit 0
