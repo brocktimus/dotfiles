@@ -37,41 +37,39 @@ fetch_bin() {
     local name=$1
     local url=$2
     local tmp_dir=$(mktemp -d)
-    
+
+    # Skip if already installed
+    if [ -f "$BIN_DIR/$name" ]; then
+        echo "$name already exists, skipping."
+        return 0
+    fi
+
     echo "Fetching $name..."
+    # Download to a file first to check success
+    if ! curl -fsSL "$url" -o "$tmp_dir/archive"; then
+        echo "Error: Failed to download $name from $url"
+        rm -rf "$tmp_dir"
+        return 1
+    fi
+
     if [[ "$url" == *.tar.gz || "$url" == *.tgz ]]; then
-        curl -fsSL "$url" | tar xz -C "$tmp_dir"
-        # Find the actual binary in the extracted tree and move it
+        tar xzf "$tmp_dir/archive" -C "$tmp_dir"
         find "$tmp_dir" -type f -name "$name" -exec mv {} "$BIN_DIR/$name" \;
     else
-        # Direct binary download (like jq)
-        curl -fsSL "$url" -o "$BIN_DIR/$name"
+        mv "$tmp_dir/archive" "$BIN_DIR/$name"
     fi
-    
+
     chmod +x "$BIN_DIR/$name"
     rm -rf "$tmp_dir"
 }
 
-# ripgrep: High-speed search
-fetch_bin "rg" "https://github.com/BurntSushi/ripgrep/releases/download/14.1.0/ripgrep-14.1.0-x86_64-unknown-linux-musl.tar.gz"
-
-# fd: Simple find alternative
-fetch_bin "fd" "https://github.com/sharkdp/fd/releases/download/v9.0.0/fd-v9.0.0-x86_64-unknown-linux-musl.tar.gz"
-
-# fzf: Fuzzy finder (Binary only)
-fetch_bin "fzf" "https://github.com/junegunn/fzf/releases/download/0.46.1/fzf-0.46.1-linux_amd64.tar.gz"
-
-# bat: Cat with syntax highlighting
-fetch_bin "bat" "https://github.com/sharkdp/bat/releases/download/v0.24.0/bat-v0.24.0-x86_64-unknown-linux-musl.tar.gz"
-
-# jq: JSON processor (Direct binary download)
-fetch_bin "jq" "https://github.com/jqlang/jq/releases/download/jq-1.7.1/jq-linux-amd64"
-
-# starship: The prompt (Optional/Commented out later)
+fetch_bin "rg"       "https://github.com/BurntSushi/ripgrep/releases/download/14.1.0/ripgrep-14.1.0-x86_64-unknown-linux-musl.tar.gz"
+fetch_bin "fd"       "https://github.com/sharkdp/fd/releases/download/v9.0.0/fd-v9.0.0-x86_64-unknown-linux-musl.tar.gz"
+fetch_bin "fzf"      "https://github.com/junegunn/fzf/releases/download/0.46.1/fzf-0.46.1-linux_amd64.tar.gz"
+fetch_bin "bat"      "https://github.com/sharkdp/bat/releases/download/v0.24.0/bat-v0.24.0-x86_64-unknown-linux-musl.tar.gz"
+fetch_bin "jq"       "https://github.com/jqlang/jq/releases/download/jq-1.7.1/jq-linux-amd64"
+fetch_bin "delta"    "https://github.com/dandavison/delta/releases/download/0.17.0/delta-0.17.0-x86_64-unknown-linux-musl.tar.gz"
 fetch_bin "starship" "https://github.com/starship/starship/releases/download/v1.17.1/starship-x86_64-unknown-linux-musl.tar.gz"
-
-# delta: Better git diff
-fetch_bin "delta" "https://github.com/dandavison/delta/releases/download/0.17.0/git-delta-0.17.0-x86_64-unknown-linux-musl.tar.gz"
 
 # Neovim (Linux x64 tarball - more reliable than AppImage)
 # This needs to be extracted carefully to keep the /share and /bin folders together

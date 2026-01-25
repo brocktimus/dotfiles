@@ -1,0 +1,10 @@
+{
+  "name": "Dogfooding Devcontainers.",
+  "build": { "dockerfile": "Dockerfile" },
+  "features": {
+    "ghcr.io/devcontainers/features/common-utils:1": {
+      "configureZshAsDefaultShell": false
+    }
+  },
+  "remoteUser": "vscode"
+}
