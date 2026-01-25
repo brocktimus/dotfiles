@@ -11,6 +11,7 @@ empty_symbol = "❗ "
 symbol = "ⓔ "
 
 [fortran]
+format = "[$symbol($version)]($style)"
 symbol = "F "
 
 [nodejs]
@@ -21,3 +22,6 @@ symbol = "🧊 "
 
 [typst]
 symbol = "t "
+
+[docker_context]
+disabled = true
