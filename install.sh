@@ -1,5 +1,6 @@
 #!/bin/bash
 set -euo pipefail
+echo "Starting install..."
 
 ###### --- 1. Config ---
 #####DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -91,6 +92,8 @@ set -euo pipefail
 #####    echo "[ -f ~/.bashrc_personal ] && source ~/.bashrc_personal" >> "$HOME/.bashrc"
 #####fi
 #####
-#####echo "Done."
-#####sleep 1
+echo "Done."
+echo "Install finished, lingering for agent handshake..."
+sync
+sleep 5
 exit 0
