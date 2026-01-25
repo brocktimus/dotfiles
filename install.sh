@@ -75,21 +75,21 @@ fetch_bin "jq"       "https://github.com/jqlang/jq/releases/download/jq-1.7.1/jq
 fetch_bin "delta"    "https://github.com/dandavison/delta/releases/download/0.17.0/delta-0.17.0-x86_64-unknown-linux-musl.tar.gz"
 fetch_bin "starship" "https://github.com/starship/starship/releases/download/v1.17.1/starship-x86_64-unknown-linux-musl.tar.gz"
 
-# Neovim (Linux x64 tarball - more reliable than AppImage)
-# This needs to be extracted carefully to keep the /share and /bin folders together
-if [[ ! -d "$HOME/.local/nvim-linux64" ]]; then
-    echo "Installing Neovim..."
-    curl -fsSL "https://github.com/neovim/neovim/releases/download/v0.9.5/nvim-linux64.tar.gz" | tar xz -C "$HOME/.local/"
-    ln -sf "$HOME/.local/nvim-linux64/bin/nvim" "$BIN_DIR/nvim"
-fi
+###### Neovim (Linux x64 tarball - more reliable than AppImage)
+###### This needs to be extracted carefully to keep the /share and /bin folders together
+#####if [[ ! -d "$HOME/.local/nvim-linux64" ]]; then
+#####    echo "Installing Neovim..."
+#####    curl -fsSL "https://github.com/neovim/neovim/releases/download/v0.9.5/nvim-linux64.tar.gz" | tar xz -C "$HOME/.local/"
+#####    ln -sf "$HOME/.local/nvim-linux64/bin/nvim" "$BIN_DIR/nvim"
+#####fi
 
-# 2. Inject the source command into the native bashrc
-# We use a guard (grep) so we don't append it every time you run the script
-if ! grep -q "source ~/.bashrc_personal" "$HOME/.bashrc"; then
-    echo "" >> "$HOME/.bashrc"
-    echo "# Load personal overrides" >> "$HOME/.bashrc"
-    echo "[ -f ~/.bashrc_personal ] && source ~/.bashrc_personal" >> "$HOME/.bashrc"
-fi
+###### 2. Inject the source command into the native bashrc
+###### We use a guard (grep) so we don't append it every time you run the script
+#####if ! grep -q "source ~/.bashrc_personal" "$HOME/.bashrc"; then
+#####    echo "" >> "$HOME/.bashrc"
+#####    echo "# Load personal overrides" >> "$HOME/.bashrc"
+#####    echo "[ -f ~/.bashrc_personal ] && source ~/.bashrc_personal" >> "$HOME/.bashrc"
+#####fi
 
 echo "Done."
 sleep 1
