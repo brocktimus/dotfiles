@@ -92,3 +92,5 @@ if ! grep -q "source ~/.bashrc_personal" "$HOME/.bashrc"; then
 fi
 
 echo "Done."
+sleep 1
+exit 0
