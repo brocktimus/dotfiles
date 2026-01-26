@@ -95,7 +95,7 @@ fi
 echo "Lazy Nvim."
 
 # This forces the plugin to load explicitly before running the update
-nvim --headless -c "Lazy! sync" -c "TSUpdateSync" +qa
+nvim --headless "+Lazy! sync" +qa
 
 echo "Done."
 echo "Install finished, lingering for agent handshake..."
