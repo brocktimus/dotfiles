@@ -33,3 +33,7 @@ opt.swapfile = false
 -- The "Don't Break Things" Clipboard
 -- Do NOT set clipboard = "unnamedplus" globally. 
 -- It adds ~50-100ms latency on every yank/delete in remote envs.
+
+-- Netrw settings
+vim.g.netrw_banner = 0
+vim.g.netrw_liststyle = 3

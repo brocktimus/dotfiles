@@ -25,3 +25,15 @@ keymap("n", "N", "Nzzzv")
 
 -- Fast exit to netrw (file explorer)
 keymap("n", "<leader>pv", vim.cmd.Ex)
+
+-- Your Arrow Key "Tough Love" (If you still want it)
+local modes = { "n", "i", "v" }
+for _, mode in ipairs(modes) do
+  keymap(mode, "<Left>",  function() print("No left for you!") end)
+  keymap(mode, "<Right>", function() print("No right for you!") end)
+  keymap(mode, "<Up>",    function() print("No up for you!") end)
+  keymap(mode, "<Down>",  function() print("No down for you!") end)
+end
+
+-- Quick Save
+keymap("n", "<leader>s", "<cmd>update<cr>", { desc = "Save if modified" })
