@@ -12,4 +12,14 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 -- 3. The magic line: it tells Lazy to look in lua/plugins/
-require("lazy").setup("plugins")
+require("lazy").setup({
+  spec = {
+    -- your plugin imports or specs here
+    { import = "plugins" },
+  },
+  -- Disable the background disk polling for config changes
+  change_detection = {
+    enabled = false,
+    notify = false, -- No "Config Change Detected" popups
+  },
+})
