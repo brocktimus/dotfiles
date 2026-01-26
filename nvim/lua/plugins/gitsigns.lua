@@ -1,6 +1,6 @@
 return {
   'lewis6991/gitsigns.nvim',
-  version = "*"
+  version = "*",
   config = function()
     require('gitsigns').setup({
       -- Signs in the gutter (keep them simple)
