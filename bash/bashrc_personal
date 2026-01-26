@@ -44,10 +44,6 @@ if command -v rg >/dev/null; then
     alias grep='rg'
 fi
 
-if command -v fd >/dev/null; then
-    alias find='fd'
-fi
-
 # Git shorthands (Senior standard)
 alias g='git'
 alias gs='git status'

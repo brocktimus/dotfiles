@@ -26,7 +26,9 @@ keymap("n", "N", "Nzzzv")
 -- Fast exit to netrw (file explorer)
 keymap("n", "<leader>pv", vim.cmd.Ex)
 
--- Your Arrow Key "Tough Love" (If you still want it)
+keymap("n", ";", "<cmd>FzfLua files<cr>", { desc = "Fuzzy find files" })
+
+-- Your Arrow Key "Tough Love"
 local modes = { "n", "i", "v" }
 for _, mode in ipairs(modes) do
   keymap(mode, "<Left>",  function() print("No left for you!") end)
@@ -37,21 +39,3 @@ end
 
 -- Quick Save
 keymap("n", "<leader>s", "<cmd>update<cr>", { desc = "Save if modified" })
-
--- Treesitter START --
--- Start/Expand selection
-vim.keymap.set({ "n", "x" }, "<CR>", function()
-  if vim.fn.mode() == "n" then
-    -- Initialize selection
-    require("nvim-treesitter.incremental_selection").init_selection()
-  else
-    -- Incremental expand
-    require("nvim-treesitter.incremental_selection").node_incremental()
-  end
-end, { desc = "TS Incremental Expand" })
-
--- Shrink selection
-vim.keymap.set("x", "<BS>", function()
-  require("nvim-treesitter.incremental_selection").node_decremental()
-end, { desc = "TS Incremental Shrink" })
--- Treesitter END --
