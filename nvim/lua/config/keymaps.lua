@@ -48,4 +48,4 @@ map("n", "<leader>sg", "<cmd>FzfLua live_grep<cr>", { desc = "Grep Project" })
 map("n", "<leader>sw", "<cmd>FzfLua grep_cword<cr>", { desc = "Grep Word Under Cursor" })
 map("n", "<leader>sd", "<cmd>FzfLua lsp_document_symbols<cr>", { desc = "Document Symbols" })
 map("n", "<leader>sr", "<cmd>FzfLua resume<cr>", { desc = "Resume Last Search" })
-map("n", "<leader>gs", "<cmd>FzfLua git_status<cr>", { desc = "Git Status" }
+map("n", "<leader>gs", "<cmd>FzfLua git_status<cr>", { desc = "Git Status" })
