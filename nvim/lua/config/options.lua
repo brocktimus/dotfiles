@@ -23,7 +23,7 @@ opt.termguicolors = true     -- 24-bit RGB
 opt.updatetime = 250
 opt.timeoutlen = 300
 opt.scrolloff = 8 -- Keep 8 lines above/below cursor
-opt.mouse = "a"
+opt.mouse = ""
 
 -- Backup/Swap (Keep the directory clean)
 opt.backup = false

@@ -62,6 +62,10 @@ alias ls='ls --color=auto'
 alias ll='ls -lah'
 alias l='ls -F'
 
+# Vim
+alias v='nvim'
+alias vim='nvim'
+
 # ==========================================
 # SHELL BEHAVIOR
 # ==========================================
