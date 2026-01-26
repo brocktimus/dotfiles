@@ -2,11 +2,7 @@ return {
   "nvim-treesitter/nvim-treesitter",
   build = ":TSUpdate",
   config = function()
-    -- The pcall "Protected Call" check
-    local ok, configs = pcall(require, "nvim-treesitter.configs")
-    if not ok then return end
-
-    configs.setup({
+    require("nvim-treesitter.configs").setup({
       -- Languages you want pre-installed via your install.sh
       ensure_installed = {
         -- Daily Drivers
@@ -31,6 +27,12 @@ return {
 
       indent = {
         enable = true,
+	disable = {},
+      },
+
+      folds = {
+        enable = true,
+	disable = {},
       },
 
       -- The "Power User" feature:
