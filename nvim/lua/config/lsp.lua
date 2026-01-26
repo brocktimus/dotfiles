@@ -36,8 +36,14 @@ local servers = {
 local caps = vim.lsp.protocol.make_client_capabilities()
 
 for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup({
-    on_attach = on_attach,
-    capabilities = caps,
-  })
+  local cfg = lspconfig[lsp]
+  local cmd = cfg.document_config.default_config.cmd[1]
+
+  -- ONLY setup if the binary exists in the Docker container's PATH
+  if vim.fn.executable(cmd) == 1 then
+    lspconfig[lsp].setup({
+      on_attach = on_attach,
+      capabilities = caps,
+    })
+  end
 end
