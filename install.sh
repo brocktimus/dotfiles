@@ -94,14 +94,8 @@ fi
 
 echo "Lazy Nvim."
 
-# 2. Bootstrap Lazy.nvim and download plugin code
-nvim --headless "+Lazy! sync" +qa
-
-echo "Treesitter."
-
-# 3. Compile the parsers into the container
-# This uses the list from your config to ensure everything is ready for "cold start"
-nvim --headless "+TSUpdateSync" +qa
+# This forces the plugin to load explicitly before running the update
+nvim --headless -c "Lazy! sync" -c "TSUpdateSync" +qa
 
 echo "Done."
 echo "Install finished, lingering for agent handshake..."
