@@ -69,12 +69,13 @@ fetch_bin() {
     rm -rf "$tmp_dir"
 }
 
-fetch_bin "rg"       "https://github.com/BurntSushi/ripgrep/releases/download/15.1.0/ripgrep-15.1.0-x86_64-unknown-linux-musl.tar.gz"
-fetch_bin "fd"       "https://github.com/sharkdp/fd/releases/download/v10.3.0/fd-v10.3.0-x86_64-unknown-linux-musl.tar.gz"
-fetch_bin "fzf"      "https://github.com/junegunn/fzf/releases/download/v0.67.0/fzf-0.67.0-linux_amd64.tar.gz"
-fetch_bin "bat"      "https://github.com/sharkdp/bat/releases/download/v0.26.1/bat-v0.26.1-i686-unknown-linux-musl.tar.gz"
-fetch_bin "jq"       "https://github.com/jqlang/jq/releases/download/jq-1.8.1/jq-linux-amd64"
-fetch_bin "delta"    "https://github.com/dandavison/delta/releases/download/0.18.2/delta-0.18.2-x86_64-unknown-linux-musl.tar.gz"
+fetch_bin "rg"          "https://github.com/BurntSushi/ripgrep/releases/download/15.1.0/ripgrep-15.1.0-x86_64-unknown-linux-musl.tar.gz"
+fetch_bin "fd"          "https://github.com/sharkdp/fd/releases/download/v10.3.0/fd-v10.3.0-x86_64-unknown-linux-musl.tar.gz"
+fetch_bin "fzf"         "https://github.com/junegunn/fzf/releases/download/v0.67.0/fzf-0.67.0-linux_amd64.tar.gz"
+fetch_bin "bat"         "https://github.com/sharkdp/bat/releases/download/v0.26.1/bat-v0.26.1-i686-unknown-linux-musl.tar.gz"
+fetch_bin "jq"          "https://github.com/jqlang/jq/releases/download/jq-1.8.1/jq-linux-amd64"
+fetch_bin "delta"       "https://github.com/dandavison/delta/releases/download/0.18.2/delta-0.18.2-x86_64-unknown-linux-musl.tar.gz"
+fetch_bin "tree-sitter" "https://github.com/tree-sitter/tree-sitter/releases/download/v0.26.3/tree-sitter-linux-x64.gz"
 
 # Neovim (Linux x64 tarball - more reliable than AppImage)
 # This needs to be extracted carefully to keep the /share and /bin folders together
