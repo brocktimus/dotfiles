@@ -41,11 +41,11 @@ end
 keymap("n", "<leader>s", "<cmd>update<cr>", { desc = "Save if modified" })
 
 -- FZF Basics
-map("n", ";", "<cmd>FzfLua files<cr>", { desc = "Fzf Files" })
-map("n", "<leader>sg", "<cmd>FzfLua live_grep<cr>", { desc = "Grep Project" })
+keymap("n", ";", "<cmd>FzfLua files<cr>", { desc = "Fzf Files" })
+keymap("n", "<leader>sg", "<cmd>FzfLua live_grep<cr>", { desc = "Grep Project" })
 
 -- FZF Useful Stuff
-map("n", "<leader>sw", "<cmd>FzfLua grep_cword<cr>", { desc = "Grep Word Under Cursor" })
-map("n", "<leader>sd", "<cmd>FzfLua lsp_document_symbols<cr>", { desc = "Document Symbols" })
-map("n", "<leader>sr", "<cmd>FzfLua resume<cr>", { desc = "Resume Last Search" })
-map("n", "<leader>gs", "<cmd>FzfLua git_status<cr>", { desc = "Git Status" })
+keymap("n", "<leader>sw", "<cmd>FzfLua grep_cword<cr>", { desc = "Grep Word Under Cursor" })
+keymap("n", "<leader>sd", "<cmd>FzfLua lsp_document_symbols<cr>", { desc = "Document Symbols" })
+keymap("n", "<leader>sr", "<cmd>FzfLua resume<cr>", { desc = "Resume Last Search" })
+keymap("n", "<leader>gs", "<cmd>FzfLua git_status<cr>", { desc = "Git Status" })
