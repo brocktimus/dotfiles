@@ -92,8 +92,12 @@ if ! grep -q "source ~/.bashrc_personal" "$HOME/.bashrc"; then
     echo "[ -f ~/.bashrc_personal ] && source ~/.bashrc_personal" >> "$HOME/.bashrc"
 fi
 
+echo "Lazy Nvim."
+
 # 2. Bootstrap Lazy.nvim and download plugin code
 nvim --headless "+Lazy! sync" +qa
+
+echo "Treesitter."
 
 # 3. Compile the parsers into the container
 # This uses the list from your config to ensure everything is ready for "cold start"
