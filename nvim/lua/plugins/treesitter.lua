@@ -2,7 +2,7 @@ return {
   "nvim-treesitter/nvim-treesitter",
   build = ":TSUpdate",
   config = function()
-    require("nvim-treesitter.config").setup({
+    require("nvim-treesitter").setup({
       -- Languages you want pre-installed via your install.sh
       ensure_installed = {
         -- Daily Drivers
@@ -27,21 +27,16 @@ return {
 
       indent = {
         enable = true,
-	disable = {},
-      },
-
-      folds = {
-        enable = true,
-	disable = {},
       },
 
       -- The "Power User" feature:
       incremental_selection = {
         enable = true,
         keymaps = {
-          init_selection = "<Enter>",   -- Start selecting with Enter
-          node_incremental = "<Enter>", -- Expand selection to the next "node"
+          init_selection = "<CR>",   -- Start selecting with Enter
+          node_incremental = "<CR>", -- Expand selection to the next "node"
           node_decremental = "<BS>",    -- Shrink selection with Backspace
+	  scope_incremental = false,    -- Prevent "Big Jump" logic
         },
       },
     })

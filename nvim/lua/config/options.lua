@@ -37,3 +37,10 @@ opt.swapfile = false
 -- Netrw settings
 vim.g.netrw_banner = 0
 vim.g.netrw_liststyle = 3
+
+-- Folds
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.opt.foldlevel = 99 -- Don't start with everything closed!
+vim.opt.foldlevelstart = 99
+vim.opt.foldtext = ""

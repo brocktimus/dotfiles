@@ -11,3 +11,18 @@
 <C-f>	Scroll Docs Down	If the LSP provides a documentation window, scroll it.
 <C-b>	Scroll Docs Up	Scroll documentation window up.
 ```
+
+## Folds
+
+```
+za	Toggle fold	Use this 90% of the time to flip between open/closed.
+zc	Close fold	Explicitly hide a block.
+zo	Open fold	Explicitly show a block.
+zv	View cursor	If you jump to a line that's hidden, this "reveals" it.
+zM	Close All	Good for getting a high-level birds-eye view of a file.
+zR	Open All	The "Reset" button when folds are getting in the way.
+zm	More folding	Incrementally closes the deepest nested levels.
+zr	Reduce folding	Incrementally opens one level of nesting.
+zj / zk	Next/Prev fold	Jump between fold boundaries without scrolling.
+zx	Re-sync	Crucial: Forces Tree-sitter to recalculate broken folds.
+```
