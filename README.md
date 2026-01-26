@@ -32,3 +32,8 @@ More nvim:
 - autopairs?
 
 PLUGIN VERSIONS ARE INSANE
+
+TODO:
+- Lock file for lazy-lock.json
+- Gitsigns blame_line + TODO stuff
+- Better LSP
