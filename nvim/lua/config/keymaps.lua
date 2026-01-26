@@ -37,3 +37,21 @@ end
 
 -- Quick Save
 keymap("n", "<leader>s", "<cmd>update<cr>", { desc = "Save if modified" })
+
+-- Treesitter START --
+-- Start/Expand selection
+vim.keymap.set({ "n", "x" }, "<CR>", function()
+  if vim.fn.mode() == "n" then
+    -- Initialize selection
+    require("nvim-treesitter.incremental_selection").init_selection()
+  else
+    -- Incremental expand
+    require("nvim-treesitter.incremental_selection").node_incremental()
+  end
+end, { desc = "TS Incremental Expand" })
+
+-- Shrink selection
+vim.keymap.set("x", "<BS>", function()
+  require("nvim-treesitter.incremental_selection").node_decremental()
+end, { desc = "TS Incremental Shrink" })
+-- Treesitter END --
