@@ -3,6 +3,7 @@
 -- 1. Load your basic settings
 require("config.options")
 require("config.keymaps")
+require("config.filetypes")
 
 -- 2. Bootstrap Lazy.nvim (the manager)
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
