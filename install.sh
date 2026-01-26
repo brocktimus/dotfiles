@@ -75,7 +75,6 @@ fetch_bin "fzf"         "https://github.com/junegunn/fzf/releases/download/v0.67
 fetch_bin "bat"         "https://github.com/sharkdp/bat/releases/download/v0.26.1/bat-v0.26.1-i686-unknown-linux-musl.tar.gz"
 fetch_bin "jq"          "https://github.com/jqlang/jq/releases/download/jq-1.8.1/jq-linux-amd64"
 fetch_bin "delta"       "https://github.com/dandavison/delta/releases/download/0.18.2/delta-0.18.2-x86_64-unknown-linux-musl.tar.gz"
-fetch_bin "tree-sitter" "https://github.com/tree-sitter/tree-sitter/releases/download/v0.26.3/tree-sitter-linux-x64.gz"
 
 # Neovim (Linux x64 tarball - more reliable than AppImage)
 # This needs to be extracted carefully to keep the /share and /bin folders together
