@@ -81,7 +81,7 @@ fetch_bin "delta"    "https://github.com/dandavison/delta/releases/download/0.18
 if [[ ! -d "$HOME/.local/nvim-linux64" ]]; then
     echo "Installing Neovim..."
     curl -fsSL "https://github.com/neovim/neovim/releases/download/v0.11.5/nvim-linux-x86_64.tar.gz" | tar xz -C "$HOME/.local/"
-    ln -sf "$HOME/.local/nvim-linux64/bin/nvim" "$BIN_DIR/nvim"
+    ln -sf "$HOME/.local/nvim-linux-x86_64/bin/nvim" "$BIN_DIR/nvim"
 fi
 
 # 2. Inject the source command into the native bashrc
