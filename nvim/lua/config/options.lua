@@ -10,7 +10,7 @@ opt.laststatus = 3           -- Global statusline (modern Neovim)
 opt.tabstop = 2
 opt.shiftwidth = 2
 opt.expandtab = true
-opt.smartindent = true
+opt.smartindent = false
 
 -- Search
 opt.ignorecase = true
