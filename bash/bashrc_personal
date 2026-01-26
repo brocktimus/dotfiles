@@ -96,6 +96,10 @@ fi
 # 3. Quick-start/Attach alias
 alias ta='tmux attach -t work || tmux new -s work'
 
+# So outer stuff works
+if [ "$DEVPOD" = "true" ]; then
+  printf "\033]2;devpod\033\\"
+fi
 
 # ==========================================
 # PROMPT (The "No-Starship" fallback)
