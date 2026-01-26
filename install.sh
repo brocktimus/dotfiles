@@ -69,18 +69,18 @@ fetch_bin() {
     rm -rf "$tmp_dir"
 }
 
-fetch_bin "rg"       "https://github.com/BurntSushi/ripgrep/releases/download/14.1.0/ripgrep-14.1.0-x86_64-unknown-linux-musl.tar.gz"
-fetch_bin "fd"       "https://github.com/sharkdp/fd/releases/download/v9.0.0/fd-v9.0.0-x86_64-unknown-linux-musl.tar.gz"
-fetch_bin "fzf"      "https://github.com/junegunn/fzf/releases/download/0.46.1/fzf-0.46.1-linux_amd64.tar.gz"
-fetch_bin "bat"      "https://github.com/sharkdp/bat/releases/download/v0.24.0/bat-v0.24.0-x86_64-unknown-linux-musl.tar.gz"
-fetch_bin "jq"       "https://github.com/jqlang/jq/releases/download/jq-1.7.1/jq-linux-amd64"
-fetch_bin "delta"    "https://github.com/dandavison/delta/releases/download/0.17.0/delta-0.17.0-x86_64-unknown-linux-musl.tar.gz"
+fetch_bin "rg"       "https://github.com/BurntSushi/ripgrep/releases/download/15.1.0/ripgrep-15.1.0-x86_64-unknown-linux-musl.tar.gz"
+fetch_bin "fd"       "https://github.com/sharkdp/fd/releases/download/v10.3.0/fd-v10.3.0-x86_64-unknown-linux-musl.tar.gz"
+fetch_bin "fzf"      "https://github.com/junegunn/fzf/releases/download/v0.67.0/fzf-0.67.0-linux_amd64.tar.gz"
+fetch_bin "bat"      "https://github.com/sharkdp/bat/releases/download/v0.26.1/bat-v0.26.1-i686-unknown-linux-musl.tar.gz"
+fetch_bin "jq"       "https://github.com/jqlang/jq/releases/download/jq-1.8.1/jq-linux-amd64"
+fetch_bin "delta"    "https://github.com/dandavison/delta/releases/download/0.18.2/delta-0.18.2-x86_64-unknown-linux-musl.tar.gz"
 
 # Neovim (Linux x64 tarball - more reliable than AppImage)
 # This needs to be extracted carefully to keep the /share and /bin folders together
 if [[ ! -d "$HOME/.local/nvim-linux64" ]]; then
     echo "Installing Neovim..."
-    curl -fsSL "https://github.com/neovim/neovim/releases/download/v0.9.5/nvim-linux64.tar.gz" | tar xz -C "$HOME/.local/"
+    curl -fsSL "https://github.com/neovim/neovim/releases/download/v0.11.5/nvim-linux-x86_64.tar.gz" | tar xz -C "$HOME/.local/"
     ln -sf "$HOME/.local/nvim-linux64/bin/nvim" "$BIN_DIR/nvim"
 fi
 
