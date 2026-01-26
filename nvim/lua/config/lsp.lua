@@ -1,12 +1,9 @@
 local lspconfig = require('lspconfig')
-local fzf = require('fzf-lua')
-
--- Handshake: Tells the LSP that we can handle fuzzy-finder features
-local capabilities = fzf.get_lsp_capabilities()
 
 -- On Attach: This function runs ONLY when an LSP connects to a file
 local on_attach = function(client, bufnr)
     local opts = { buffer = bufnr }
+    local fzf = require('fzf-lua')
 
     -- Navigation (Mapped to FZF)
     vim.keymap.set('n', 'gd', fzf.lsp_definitions, opts)
@@ -33,6 +30,7 @@ local servers = {
 for _, lsp in ipairs(servers) do
     lspconfig[lsp].setup({
         on_attach = on_attach,
-        capabilities = capabilities,
+	-- Use standard internal caps if fzf isn't ready, or call it here
+	capabilities = require('fzf-lua').get_lsp_capabilities(),
     })
 end
