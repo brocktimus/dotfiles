@@ -8,4 +8,5 @@ RUN apt-get update && apt-get install -y \
     tmux \
     less \
     git \
+    file \
     && rm -rf /var/lib/apt/lists/*
