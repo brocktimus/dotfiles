@@ -30,3 +30,5 @@ zx	Re-sync	Crucial: Forces Tree-sitter to recalculate broken folds.
 More nvim:
 - conform (formatting)
 - autopairs?
+
+PLUGIN VERSIONS ARE INSANE

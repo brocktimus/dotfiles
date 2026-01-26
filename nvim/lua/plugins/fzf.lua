@@ -1,5 +1,6 @@
 return {
   "ibhagwan/fzf-lua",
+  commit = "32f3422";
   dependencies = { "nvim-tree/nvim-web-devicons" },
   config = function()
     require("fzf-lua").setup({
