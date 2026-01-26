@@ -23,12 +23,14 @@ end
 -- Explicit list of servers you've installed in your Dockerfile
 -- If a binary isn't in your $PATH, it just won't start (no crash)
 local servers = { 
+    'phpactor', 
     'basedpyright', 
-    'gopls', 
+    'basedpyright', 
     'solargraph', 
     'yamlls', 
     'jsonls', 
-    'marksman' 
+    'gopls', 
+    'marksman',
 }
 
 -- Use standard Neovim capabilities. 
