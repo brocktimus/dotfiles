@@ -24,14 +24,18 @@ ln -sf "$DOTFILES_DIR/bash/bashrc_personal" "$HOME/.bashrc_personal"
 ln -sf "$DOTFILES_DIR/bash/inputrc" "$HOME/.inputrc"
 
 # SSH
-#mkdir -p "$HOME/.ssh"
-#chmod 700 "$HOME/.ssh"
-#ln -sf "$DOTFILES_DIR/ssh/config" "$HOME/.ssh/config"
+mkdir -p "$HOME/.ssh"
+chmod 700 "$HOME/.ssh"
+ln -sf "$DOTFILES_DIR/ssh/config" "$HOME/.ssh/config"
 
 # fzf
 ln -sfn "$DOTFILES_DIR/fzf" "$HOME/.fzf"
 
+# tmux
 ln -sf "$DOTFILES_DIR/tmux/tmux.conf" "$HOME/.tmux.conf"
+
+# nvim
+ln -sfn "$DOTFILES_DIR/nvim" "$HOME/.config/nvim"
 
 # --- The Pinned Toolbelt ---
 # Usage: fetch_bin "binary_name" "url"
