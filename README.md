@@ -26,3 +26,7 @@ zr	Reduce folding	Incrementally opens one level of nesting.
 zj / zk	Next/Prev fold	Jump between fold boundaries without scrolling.
 zx	Re-sync	Crucial: Forces Tree-sitter to recalculate broken folds.
 ```
+
+More nvim:
+- conform (formatting)
+- autopairs?

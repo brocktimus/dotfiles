@@ -47,3 +47,4 @@ keymap("n", "<leader>sw", "<cmd>FzfLua grep_cword<cr>", { desc = "Grep Word Unde
 keymap("n", "<leader>sd", "<cmd>FzfLua lsp_document_symbols<cr>", { desc = "Document Symbols" })
 keymap("n", "<leader>sr", "<cmd>FzfLua resume<cr>", { desc = "Resume Last Search" })
 keymap("n", "<leader>gs", "<cmd>FzfLua git_status<cr>", { desc = "Git Status" })
+keymap("n", ";t", "<cmd>TodoFzfLua<cr>", { desc = "Fuzzy find TODOs" })

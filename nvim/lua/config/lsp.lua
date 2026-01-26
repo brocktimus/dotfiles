@@ -1,6 +1,4 @@
 local lspconfig = require('lspconfig')
-
-local lspconfig = require('lspconfig')
 local fzf = require('fzf-lua')
 
 -- Handshake: Tells the LSP that we can handle fuzzy-finder features

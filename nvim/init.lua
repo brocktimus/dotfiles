@@ -24,5 +24,3 @@ require("lazy").setup({
     notify = false, -- No "Config Change Detected" popups
   },
 })
-
-require("config.lsp")
