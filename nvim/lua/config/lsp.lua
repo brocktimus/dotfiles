@@ -31,13 +31,13 @@ local servers = {
     'marksman' 
 }
 
+-- Use standard Neovim capabilities. 
+-- FZF-lua doesn't actually 'add' capabilities; it just formats the results.
+local caps = vim.lsp.protocol.make_client_capabilities()
+
 for _, lsp in ipairs(servers) do
-    -- This is the fixed call that handles the nil capability race condition
-    local ok, fzf = pcall(require, 'fzf-lua')
-    local caps = ok and fzf.get_lsp_capabilities() or vim.lsp.protocol.make_client_capabilities()
-    lspconfig[lsp].setup({
-        on_attach = on_attach,
-	-- Use standard internal caps if fzf isn't ready, or call it here
-	capabilities = require('fzf-lua').get_lsp_capabilities(),
-    })
+  lspconfig[lsp].setup({
+    on_attach = on_attach,
+    capabilities = caps,
+  })
 end
