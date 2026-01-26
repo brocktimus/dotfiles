@@ -26,8 +26,6 @@ keymap("n", "N", "Nzzzv")
 -- Fast exit to netrw (file explorer)
 keymap("n", "<leader>pv", vim.cmd.Ex)
 
-keymap("n", ";", "<cmd>FzfLua files<cr>", { desc = "Fuzzy find files" })
-
 -- Your Arrow Key "Tough Love"
 local modes = { "n", "i", "v" }
 for _, mode in ipairs(modes) do
@@ -41,7 +39,7 @@ end
 keymap("n", "<leader>s", "<cmd>update<cr>", { desc = "Save if modified" })
 
 -- FZF Basics
-keymap("n", ";", "<cmd>FzfLua files<cr>", { desc = "Fzf Files" })
+keymap("n", ";f", "<cmd>FzfLua files<cr>", { desc = "Fzf Files" })
 keymap("n", "<leader>sg", "<cmd>FzfLua live_grep<cr>", { desc = "Grep Project" })
 
 -- FZF Useful Stuff
