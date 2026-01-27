@@ -37,3 +37,5 @@ TODO:
 - Lock file for lazy-lock.json
 - Gitsigns blame_line + TODO stuff
 - Better LSP
+
+If this has issues, try nix
