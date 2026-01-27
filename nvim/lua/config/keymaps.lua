@@ -48,3 +48,24 @@ keymap("n", "<leader>sd", "<cmd>FzfLua lsp_document_symbols<cr>", { desc = "Docu
 keymap("n", "<leader>sr", "<cmd>FzfLua resume<cr>", { desc = "Resume Last Search" })
 keymap("n", "<leader>gs", "<cmd>FzfLua git_status<cr>", { desc = "Git Status" })
 keymap("n", ";t", "<cmd>TodoFzfLua<cr>", { desc = "Fuzzy find TODOs" })
+
+-- Run the tests
+keymap('n', '<leader>tn', ":TestNearest<CR>", { desc = "Test Nearest" })
+keymap('n', '<leader>tf', ":TestFile<CR>",    { desc = "Test File" })
+
+-- Toggle the terminal split (if you want to hide/show it)
+-- Note: This assumes the terminal is the only other window.
+keymap('n', '<leader>tt', function()
+    for _, win in ipairs(vim.api.nvim_list_wins()) do
+        local buf = vim.api.nvim_win_get_buf(win)
+        if vim.bo[buf].buftype == "terminal" then
+            vim.api.nvim_win_close(win, true)
+            return
+        end
+    end
+    print("No test terminal open")
+end, { desc = "Close Test Terminal" })
+
+-- Escape Terminal Mode easily to start searching/scrolling
+-- This lets you use '/' immediately to find your failure
+keymap('t', '<Esc>', [[<C-\><C-n>]], { desc = "Exit Terminal Mode" })
