@@ -35,6 +35,7 @@ ln -sfn "$DOTFILES_DIR/fzf" "$HOME/.fzf"
 ln -sf "$DOTFILES_DIR/tmux/tmux.conf" "$HOME/.tmux.conf"
 
 # nvim
+mkdir -p "$HOME/.config"
 ln -sfn "$DOTFILES_DIR/nvim" "$HOME/.config/nvim"
 
 # --- The Pinned Toolbelt ---
