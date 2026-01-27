@@ -45,6 +45,12 @@ vim.opt.foldlevel = 99 -- Don't start with everything closed!
 vim.opt.foldlevelstart = 99
 vim.opt.foldtext = ""
 
+-- Wrap
+vim.opt.wrap = true            -- Enable wrapping
+vim.opt.breakindent = true     -- Wrapped lines keep the same indentation level
+vim.opt.linebreak = true       -- Don't break words in the middle
+vim.opt.showbreak = "↳ "       -- Visual cue at the start of wrapped lines
+
 -- Highlighting
 vim.api.nvim_create_autocmd('FileType', {
   pattern = { '<filetype>' },
