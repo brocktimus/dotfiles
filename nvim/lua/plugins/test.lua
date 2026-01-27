@@ -1,18 +1,27 @@
 return {
-  "vim-test/vim-test",
+  "nvim-neotest/neotest",
+  dependencies = {
+    "nvim-neotest/nvim-nio",
+    "nvim-lua/plenary.nvim",
+    "nvim-treesitter/nvim-treesitter",
+    "V13Axel/neotest-pest",
+    "nvim-neotest/neotest-python",
+  },
   config = function()
-    -- Set the strategy to Neovim's internal terminal
-    vim.g["test#strategy"] = "neovim"
-    
-    -- Open the terminal in a 15-line horizontal split at the bottom
-    vim.g["test#neovim#term_position"] = "belowright 15sp"
-    
-    -- Crucial: Don't stay in Terminal mode after the test starts
-    -- This allows you to scroll/search immediately without a key combo
-    vim.g["test#neovim#start_normal"] = 1
-
-    -- Your project-specific entry points
-    vim.g["test#php#pest#executable"] = "composer test"
-    vim.g["test#python#pytest#executable"] = "poe test"
-  end
+    require("neotest").setup({
+      adapters = {
+        require("neotest-pest")({
+          pest_cmd = function() return "vendor/bin/pest" end,
+        }),
+        require("neotest-python")({
+          runner = "pytest",
+          -- Points to your virtualenv if you use one
+          -- pytest_discover_instances = true, 
+        }),
+      },
+      -- This fixes your "Snap-back" problem:
+      -- Output stays in a static, searchable buffer.
+      output = { open_on_run = true }, 
+    })
+  end,
 }

@@ -39,3 +39,17 @@ TODO:
 - Better LSP
 
 If this has issues, try nix
+
+```
+vim.keymap.set('n', '<leader>tf', function()
+    local file = vim.fn.expand('%')
+    -- Define your command
+    local cmd = file:match('%.php$') and ("vendor/bin/pest " .. file) or ("pytest " .. file)
+    
+    -- Open a bottom split, 15 lines high, and start the terminal
+    vim.cmd("botright 15new | term " .. cmd)
+    
+    -- Force terminal to start in insert mode (so you can hit 'q' or 'ctrl-c' immediately)
+    vim.cmd("startinsert")
+end)
+```
