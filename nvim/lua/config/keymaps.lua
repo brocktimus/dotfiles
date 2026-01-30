@@ -42,6 +42,11 @@ keymap("n", "<leader>s", "<cmd>update<cr>", { desc = "Save if modified" })
 keymap("n", ";f", "<cmd>FzfLua files<cr>", { desc = "Fzf Files" })
 keymap("n", "<leader>sg", "<cmd>FzfLua live_grep<cr>", { desc = "Grep Project" })
 
+keymap('n', '<leader>ff', ':FzfLua files<CR>', { noremap = true, silent = true, desc = "Find Files" })
+keymap('n', '<leader>fg', ':FzfLua live_grep<CR>', { noremap = true, silent = true, desc = "Live Grep" })
+keymap('n', '<leader>fb', ':FzfLua buffers<CR>', { noremap = true, silent = true, desc = "List Buffers" })
+keymap('n', '<leader>fh', ':FzfLua help_tags<CR>', { noremap = true, silent = true, desc = "Help Tags" })
+
 -- FZF Useful Stuff
 keymap("n", "<leader>sw", "<cmd>FzfLua grep_cword<cr>", { desc = "Grep Word Under Cursor" })
 keymap("n", "<leader>sd", "<cmd>FzfLua lsp_document_symbols<cr>", { desc = "Document Symbols" })
@@ -53,12 +58,46 @@ keymap("n", ";t", "<cmd>TodoFzfLua<cr>", { desc = "Fuzzy find TODOs" })
 -- This lets you use '/' immediately to find your failure
 keymap('t', '<Esc>', [[<C-\><C-n>]], { desc = "Exit Terminal Mode" })
 
+-- Show the error/warning message in a floating window (The one you asked for)
+keymap('n', 'gl', vim.diagnostic.open_float)
 
--- This uses Treesitter to find the exact 'it' or 'test' block.
-keymap("n", "<leader>tn", function() require("neotest").run.run() end, { desc = "Test Nearest" })
-keymap("n", "<leader>tf", function() require("neotest").run.run(vim.fn.expand("%")) end, { desc = "Test File" })
-keymap("n", "<leader>ts", function() require("neotest").run.stop() end, { desc = "Test Stop" })
+-- Jump between diagnostics
+keymap('n', '[d', vim.diagnostic.goto_prev)
+keymap('n', ']d', vim.diagnostic.goto_next)
 
--- 3. Open the output in a STATIC split (Fixes your "Snap-back")
--- This opens a normal buffer. Use / to search. It won't scroll unless you do.
-keymap("n", "<leader>to", function() require("neotest").output.open({ enter = true }) end, { desc = "Test Output" })
+-- Dump everything into the Quickfix list (Project-wide view)
+keymap('n', '<leader>dl', vim.diagnostic.setqflist)
+
+-- Toggle LSP diagnostics
+keymap('n', '<leader>dn', function()
+    local is_on = vim.diagnostic.config().virtual_text
+    vim.diagnostic.config({
+        virtual_text = not is_on,
+        signs = not is_on,
+        underline = not is_on,
+    })
+    print("Diagnostics: " .. (not is_on and "ON" or "OFF"))
+end, { desc = "Toggle Diagnostics" })
+
+keymap('n', '<leader>tf', function()
+    local file = vim.fn.expand("%:p")
+
+    -- Only run if it's a PHP file within a 'tests' folder
+    if file:match("tests/.*%.php$") then
+        -- Close existing terminal windows to prevent clutter
+        for _, win in ipairs(vim.api.nvim_tabpage_list_wins(0)) do
+            local buf = vim.api.nvim_win_get_buf(win)
+            if vim.bo[buf].buftype == "terminal" then
+                vim.api.nvim_win_close(win, true)
+            end
+        end
+
+        -- Use vim.cmd to execute the sequence
+        vim.cmd("botright 15split")
+        vim.cmd("term ./vendor/bin/pest " .. file)
+        -- This jumps back to the code window
+        vim.cmd("wincmd p")
+    else
+        print("Not a valid Pest test file.")
+    end
+end, { desc = "Run Pest on current file" })
