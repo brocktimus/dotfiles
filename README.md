@@ -56,3 +56,14 @@ end)
 -- Add this to the function if you want it to wipe itself out
 vim.api.nvim_buf_set_option(0, 'bufhidden', 'wipe')
 ```
+
+# Git
+
+## Sick Reviews
+
+```
+git checkout -b reviewing later-hash
+git reset --soft earliest-hash
+# Everything now unstaged changes
+git diff --cached | nvim -R  -
+```

@@ -79,6 +79,8 @@ fetch_bin "bat"         "https://github.com/sharkdp/bat/releases/download/v0.26.
 fetch_bin "jq"          "https://github.com/jqlang/jq/releases/download/jq-1.8.1/jq-linux-amd64"
 fetch_bin "delta"       "https://github.com/dandavison/delta/releases/download/0.18.2/delta-0.18.2-x86_64-unknown-linux-musl.tar.gz"
 fetch_bin "tree-sitter" "https://github.com/tree-sitter/tree-sitter/releases/download/v0.26.3/tree-sitter-linux-x64.gz"
+fetch_bin "lazygit"     "https://github.com/jesseduffield/lazygit/releases/download/v0.58.1/lazygit_0.58.1_linux_x86_64.tar.gz"
+fetch_bin "gitui"       "https://github.com/gitui-org/gitui/releases/download/v0.28.0/gitui-linux-x86_64.tar.gz"
 
 
 # Neovim (Linux x64 tarball - more reliable than AppImage)
