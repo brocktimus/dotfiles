@@ -66,4 +66,3 @@ vim.diagnostic.config({
 
 -- Grab Gruvbox colors dynamically or hardcode the palette shades
 vim.opt.colorcolumn = "80,120"
-vim.api.nvim_set_hl(0, 'ColorColumn', { bg = '#3c3836' }) -- Gruvbox bg1: subtle
