@@ -6,6 +6,14 @@ vim.g.mapleader = " "
 -- Better window navigation (if not using C-h/j/k/l tmux-nav)
 -- keymap("n", "<C-h>", "<C-w>h")
 
+-- Vertical split
+keymap("n", "<leader>|", ":vsplit<CR>", { desc = "Split vertical" })
+keymap("n", "<leader>v", ":vsplit<CR>", { desc = "Split vertical" })
+
+-- Horizontal split
+keymap("n", "<leader>_", ":split<CR>", { desc = "Split horizontal" })
+keymap("n", "<leader>-", ":split<CR>", { desc = "Split horizontal" })
+
 -- Resizing panes
 keymap("n", "<C-Up>", ":resize +2<CR>")
 keymap("n", "<C-Down>", ":resize -2<CR>")
@@ -26,6 +34,9 @@ keymap("n", "N", "Nzzzv")
 -- Fast exit to netrw (file explorer)
 keymap("n", "<leader>pv", vim.cmd.Ex)
 
+-- Create new file in Open new file
+keymap('n', '<leader>nf', ":e <C-r>=expand('%:h')<CR>/", { desc = 'New file relative to current buffer' })
+
 -- Your Arrow Key "Tough Love"
 local modes = { "n", "i", "v" }
 for _, mode in ipairs(modes) do
@@ -37,6 +48,7 @@ end
 
 -- Quick Save
 keymap("n", "<leader>s", "<cmd>update<cr>", { desc = "Save if modified" })
+keymap("n", "<leader>w", "<cmd>update<cr>", { desc = "Save if modified" })
 
 -- FZF Basics
 keymap("n", ";f", "<cmd>FzfLua files<cr>", { desc = "Fzf Files" })
@@ -79,6 +91,7 @@ keymap('n', '<leader>dn', function()
     print("Diagnostics: " .. (not is_on and "ON" or "OFF"))
 end, { desc = "Toggle Diagnostics" })
 
+-- Test the current file
 keymap('n', '<leader>tf', function()
     local file = vim.fn.expand("%:p")
 
