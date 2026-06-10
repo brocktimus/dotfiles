@@ -92,7 +92,7 @@ keymap('n', '<leader>dn', function()
 end, { desc = "Toggle Diagnostics" })
 
 -- Test the current file
-keymap('n', '<leader>tf', function()
+keymap('n', '<leader>tF', function()
     local file = vim.fn.expand("%:p")
 
     -- Only run if it's a PHP file within a 'tests' folder
@@ -114,3 +114,17 @@ keymap('n', '<leader>tf', function()
         print("Not a valid Pest test file.")
     end
 end, { desc = "Run Pest on current file" })
+
+-- Testing with neotest!
+---- Execution
+keymap("n", "<leader>tr", function() require("neotest").run.run() end, { desc = "Test Nearest" })
+keymap("n", "<leader>tf", function() require("neotest").run.run(vim.fn.expand("%")) end, { desc = "Test File" })
+keymap("n", "<leader>tl", function() require("neotest").run.run_last() end, { desc = "Test Last" })
+keymap("n", "<leader>ts", function() require("neotest").run.stop() end, { desc = "Stop Test" })
+---- UI/Navigation
+keymap("n", "<leader>tn", function() require("neotest").summary.toggle() end, { desc = "Toggle Summary" })
+keymap("n", "<leader>to", function() require("neotest").output.open({ enter = true }) end, { desc = "Show Output" })
+keymap("n", "<leader>tp", function() require("neotest").output_panel.toggle() end, { desc = "Toggle Output Panel" })
+---- Diagnostic Jumps
+keymap("n", "[t", function() require("neotest").jump.prev({ status = "failed" }) end, { desc = "Prev Failed Test" })
+keymap("n", "]t", function() require("neotest").jump.next({ status = "failed" }) end, { desc = "Next Failed Test" })

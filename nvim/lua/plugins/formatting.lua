@@ -14,6 +14,10 @@ return {
           -- Default fallback if neither match
           return { "prettier" }
         end,
+        php = function(bufnr)
+          local bufname = vim.api.nvim_buf_get_name(bufnr)
+          return { "pint" }
+        end,
       },
       -- Global settings
       foramt_on_save = nil,
