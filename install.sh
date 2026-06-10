@@ -85,9 +85,10 @@ fetch_bin "gitui"       "https://github.com/gitui-org/gitui/releases/download/v0
 
 # Neovim (Linux x64 tarball - more reliable than AppImage)
 # This needs to be extracted carefully to keep the /share and /bin folders together
-if [[ ! -d "$HOME/.local/nvim-linux64" ]]; then
+if [[ ! -d "$HOME/.local/nvim-linux-x86_64" ]]; then
     echo "Installing Neovim..."
-    curl -fsSL "https://github.com/neovim/neovim/releases/download/v0.11.5/nvim-linux-x86_64.tar.gz" | tar xz -C "$HOME/.local/"
+    #curl -fsSL "https://github.com/neovim/neovim/releases/download/v0.11.5/nvim-linux-x86_64.tar.gz" | tar xz -C "$HOME/.local/"
+    curl -fsSL "https://github.com/neovim/neovim/releases/download/v0.12.2/nvim-linux-x86_64.tar.gz" | tar xz -C "$HOME/.local/"
     ln -sf "$HOME/.local/nvim-linux-x86_64/bin/nvim" "$BIN_DIR/nvim"
 fi
 
