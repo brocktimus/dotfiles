@@ -8,9 +8,11 @@ opt.laststatus = 3           -- Global statusline (modern Neovim)
 
 -- Tabs & Indent
 opt.tabstop = 2
+opt.softtabstop = 2
 opt.shiftwidth = 2
 opt.expandtab = true
 opt.smartindent = false
+vim.g.markdown_recommended_style = 0 -- eww ugly gross 4 spaces
 
 -- Search
 opt.ignorecase = true
@@ -39,23 +41,55 @@ vim.g.netrw_banner = 0
 vim.g.netrw_liststyle = 3
 
 -- Folds
-vim.opt.foldmethod = "expr"
-vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-vim.opt.foldlevel = 99 -- Don't start with everything closed!
-vim.opt.foldlevelstart = 99
-vim.opt.foldtext = ""
+opt.foldmethod = "expr"
+opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+opt.foldlevel = 99 -- Don't start with everything closed!
+opt.foldlevelstart = 99
+opt.foldtext = ""
 
 -- Wrap
-vim.opt.wrap = true            -- Enable wrapping
-vim.opt.breakindent = true     -- Wrapped lines keep the same indentation level
-vim.opt.linebreak = true       -- Don't break words in the middle
-vim.opt.showbreak = "↳ "       -- Visual cue at the start of wrapped lines
+opt.wrap = true            -- Enable wrapping
+opt.breakindent = true     -- Wrapped lines keep the same indentation level
+opt.linebreak = true       -- Don't break words in the middle
+opt.showbreak = "↳ "       -- Visual cue at the start of wrapped lines
 
 -- Highlighting
 vim.api.nvim_create_autocmd('FileType', {
-  pattern = { '<filetype>' },
-  callback = function() vim.treesitter.start() end,
+  pattern = { "php", "javascript", "typescript", "python" },
+  callback = function() 
+    vim.treesitter.start()
+    --vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+    --//vim.bo.autoindent = true
+    --//vim.bo.smartindent = false
+    --//vim.bo.cindent = false
+  end,
 })
+
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "php",
+    callback = function()
+        -- Direct override to kill GetPhpIndent() and force C-indentation
+        vim.opt_local.indentexpr = ""
+        vim.opt_local.cindent = true
+        vim.opt_local.autoindent = true
+        
+        -- Override the EditorConfig softtabstop bug
+        vim.opt_local.tabstop = 4
+        vim.opt_local.shiftwidth = 4
+        vim.opt_local.softtabstop = 4
+    end,
+})
+
+-- Folding?
+vim.api.nvim_create_autocmd({ "BufReadPost", "FileReadPost" }, {
+  pattern = { "*.js", "*.jsx", "*.ts", "*.tsx", "*.py", "*.php" },
+  callback = function() 
+    vim.schedule(function()
+      vim.opt_local.foldmethod = "expr"
+    end)
+  end,
+})
+
 
 -- LSP
 vim.diagnostic.config({

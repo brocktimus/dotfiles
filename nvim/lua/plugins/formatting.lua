@@ -16,7 +16,7 @@ return {
         end,
         php = function(bufnr)
           local bufname = vim.api.nvim_buf_get_name(bufnr)
-          return { "pint" }
+          return { "pint", "php_cs_fixer" }
         end,
       },
       -- Global settings

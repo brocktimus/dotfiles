@@ -37,6 +37,9 @@ keymap("n", "<leader>pv", vim.cmd.Ex)
 -- Create new file in Open new file
 keymap('n', '<leader>nf', ":e <C-r>=expand('%:h')<CR>/", { desc = 'New file relative to current buffer' })
 
+-- Faster toggle fold
+keymap("n", "zz", "za")
+
 -- Your Arrow Key "Tough Love"
 local modes = { "n", "i", "v" }
 for _, mode in ipairs(modes) do
