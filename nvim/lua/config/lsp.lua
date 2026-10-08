@@ -31,6 +31,7 @@ local servers = {
     'jsonls', 
     'gopls', 
     'marksman',
+    'ts_ls',
 }
 
 -- Use standard Neovim capabilities. 
