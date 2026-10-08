@@ -81,6 +81,7 @@ fetch_bin "delta"       "https://github.com/dandavison/delta/releases/download/0
 fetch_bin "tree-sitter" "https://github.com/tree-sitter/tree-sitter/releases/download/v0.26.3/tree-sitter-linux-x64.gz"
 fetch_bin "lazygit"     "https://github.com/jesseduffield/lazygit/releases/download/v0.58.1/lazygit_0.58.1_linux_x86_64.tar.gz"
 fetch_bin "gitui"       "https://github.com/gitui-org/gitui/releases/download/v0.28.0/gitui-linux-x86_64.tar.gz"
+fetch_bin "difft"       "https://github.com/Wilfred/difftastic/releases/download/0.71.0/difft-0.71.0-x86_64-unknown-linux-musl.tar.gz"
 
 
 # Neovim (Linux x64 tarball - more reliable than AppImage)
